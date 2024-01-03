@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "riverpodnew" "\0"
+            VALUE "FileDescription", "ofcriverpod" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "riverpodnew" "\0"
+            VALUE "InternalName", "ofcriverpod" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "riverpodnew.exe" "\0"
-            VALUE "ProductName", "riverpodnew" "\0"
+            VALUE "OriginalFilename", "ofcriverpod.exe" "\0"
+            VALUE "ProductName", "ofcriverpod" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

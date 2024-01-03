@@ -107,7 +107,7 @@ class Items {
   int? openIssues;
   int? watchers;
   String? defaultBranch;
-  int? score;
+  num? score;
 
   Items(
       {this.id,

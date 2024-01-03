@@ -21,11 +21,21 @@ class StarredGitRepo {
   Future<StarredRepoModel?> getStarredRepo() async {
     final url = Uri.parse('https://api.github.com/search/repositories?q=created:%3E2022-04-29&sort=stars&order=desc');
     final response = await http.get(url);
-    final jsonresponse = json.decode(response.body);
-    log(response.body);
-    return StarredRepoModel.fromJson(jsonresponse);
 
-    // log(response.body);
-    // return response;
+    if (response.statusCode == 200) {
+     // return json.decode(utf8.decode(response.bodyBytes));
+
+      final jsonresponse = json.decode(response.body);
+      log(response.body);
+      return StarredRepoModel.fromJson(jsonresponse);
+
+      // log(response.body);
+      // return response;
+
+    }
+
+    return null;
+
+
   }
 }

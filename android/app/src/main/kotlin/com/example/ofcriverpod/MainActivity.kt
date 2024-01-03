@@ -1,4 +1,4 @@
-package com.example.riverpodnew
+package com.example.ofcriverpod
 
 import io.flutter.embedding.android.FlutterActivity
 
