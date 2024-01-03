@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ofcriverpod/UI/starredTile.dart';
+import 'package:ofcriverpod/models/starredGitRepoModel.dart';
 
 import '../Dashboard_Widgets/DashboardOptions.dart';
 import '../controller/product_controller.dart';
@@ -20,7 +22,9 @@ class NewDash extends ConsumerWidget {
     var deviceheight = MediaQuery.of(context).size.height;
     var devicewidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -31,8 +35,8 @@ class NewDash extends ConsumerWidget {
             child: Image.network(
               "https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg",
               fit: BoxFit.cover,
-              width: 50.0,
-              height: 50.0,
+              width: 30.0,
+              height: 30.0,
             )
         ),
       ),
@@ -73,75 +77,7 @@ class NewDash extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: gitdatas?.length,
-                            itemBuilder: (context,index){
-                              return Card(
-                                color: Colors.white,
-                                elevation: 5,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    //height: 80,
-                                    //color: Colors.red.shade50,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(0),
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.adjust_rounded,size: 16,),
-                                          SizedBox(width: 18),
-                                          Expanded(
-                                            child: Container(
-                                              height: 50,
-                                              // color: Colors.yellow,
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(gitdatas?[index].name ?? "" ,
-                                                    maxLines: 1,
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight: FontWeight.bold,
-                                                        shadows: [
-                                                          Shadow(
-                                                              color: Colors.black,
-                                                              offset: Offset(0, -8))
-                                                        ],
-                                                        color: Colors.transparent,
-                                                        decoration: TextDecoration.underline,
-                                                        decorationColor: Colors.green.shade200,
-                                                        decorationThickness: 10),),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          //   setOverLap(overLapImg)
-                                          for(int i=0 ; i< overLapImg.length; i++)
-                                            Align(
-                                              widthFactor: 0.6,
-                                              child: ClipOval(
-                                                  child: Image.network(
-                                                    overLapImg[i],
-                                                    fit: BoxFit.cover,
-                                                    width: 20.0,
-                                                    height: 20.0,
-                                                  )
-                                              ),
-                                            ),
-                                          SizedBox(width: 8),
-                                          Icon(Icons.arrow_forward_ios_sharp,color: Colors.grey,size: 16,)
-
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
-
-                            })
+                        StarredTile(gitdatas: gitdatas, overLapImg: overLapImg)
                       ],
                     ),
                   ),
@@ -157,23 +93,27 @@ class NewDash extends ConsumerWidget {
     );
   }
 
-  Container nameCard(double devicewidth,String txt1,String txt2) {
-    return Container(
-      // color: Colors.red,
-      width: devicewidth,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(txt1,style: TextStyle(fontSize: 16,color: Colors.grey),),
-            SizedBox(
-              height: 8,
-            ),
-            Text(txt2,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold))
-          ],
-        ),
-      ),
-    );
-  }
+
 }
+
+Container nameCard(double devicewidth,String txt1,String txt2) {
+  return Container(
+    color: Colors.white,
+    width: devicewidth,
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(txt1,style: TextStyle(fontSize: 18,color: Colors.grey),),
+          SizedBox(
+            height: 8,
+          ),
+          Text(txt2,style: TextStyle(fontSize: 26,color: Colors.black,fontWeight: FontWeight.bold))
+        ],
+      ),
+    ),
+  );
+}
+
+

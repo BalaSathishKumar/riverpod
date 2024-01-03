@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ofcriverpod/constants/colors.dart';
 
 
 class dashboardOptions extends StatelessWidget {
@@ -18,13 +19,13 @@ class dashboardOptions extends StatelessWidget {
               children: [
                 Expanded(
                   flex:1,
-                  child: dashTile("In Progress",Icons.watch_later_outlined,Colors.amber.shade200),
+                  child: dashTile("In Progress",Icons.watch_later_outlined,Appcolors.dashorange),
                 ),
                 SizedBox(
                   width: 10,
                 ),Expanded(
                   flex:1,
-                  child: dashTile("Ongoing",Icons.repeat,Colors.blue.shade200),
+                  child: dashTile("Ongoing",Icons.repeat,Appcolors.dashpurple),
                 ),
               ],
             ),
@@ -36,13 +37,13 @@ class dashboardOptions extends StatelessWidget {
               children: [
                 Expanded(
                   flex:1,
-                  child: dashTile("Completed",Icons.file_copy,Colors.green.shade200),
+                  child: dashTile("Completed",Icons.file_copy,Appcolors.dashgreen),
                 ),
                 SizedBox(
                   width: 10,
                 ),Expanded(
                   flex:1,
-                  child: dashTile("Cancel",Icons.free_cancellation,Colors.red.shade200),
+                  child: dashTile("Cancel",Icons.free_cancellation,Appcolors.dashdarkorange),
                 ),
               ],
             ),
@@ -65,7 +66,7 @@ class dashboardOptions extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(txt,style: TextStyle(color: Colors.white)),
+          Text(txt,style: TextStyle(fontSize:18,color: Colors.white)),
         ],
       ),
     );
