@@ -5,7 +5,7 @@ import 'package:ofcriverpod/models/starredGitRepoModel.dart';
 
 import '../Dashboard_Widgets/DashboardOptions.dart';
 import '../controller/product_controller.dart';
-
+var checkboxProvider= StateProvider<int>((ref) => 0);
 
 class NewDash extends ConsumerWidget {
 
@@ -77,7 +77,17 @@ class NewDash extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        StarredTile(gitdatas: gitdatas, overLapImg: overLapImg)
+                        StarredTile(
+                            gitdatas: gitdatas,
+                            overLapImg: overLapImg,
+                          onPressed: (bool){
+                              },
+                          onPressedchk: (index){
+                            print('inexxx $index');
+                            ref.read(checkboxProvider.notifier).state = index;
+                          },
+                          selectedIndex: ref.watch(checkboxProvider),
+                        )
                       ],
                     ),
                   ),

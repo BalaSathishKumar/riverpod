@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
 import 'NewDash.dart';
+import 'dashboardDesign.dart';
 import 'detailPage.dart';
 var indexProvider= StateProvider<int>((ref) => 0);
 
@@ -31,7 +32,9 @@ class MyHomePage extends ConsumerWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
 
         child: Icon(Icons.add,color: Colors.white,),
-        onPressed: () {  },
+        onPressed: () {
+       Navigator.push(context, MaterialPageRoute(builder: (context)=>DashboardDesign()));
+        },
         //params
       ),
 
@@ -40,7 +43,7 @@ class MyHomePage extends ConsumerWidget {
         itemCount: icondata.length,
         activeIndex: ref.watch(indexProvider),
         gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
+        notchSmoothness: NotchSmoothness.sharpEdge,
 
 
           tabBuilder: (int index, bool isActive) {
