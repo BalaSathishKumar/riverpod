@@ -1,20 +1,10 @@
-import 'dart:convert';
+
 
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../models/product.dart';
 import '../models/starredGitRepoModel.dart';
-import '../repo/product_repo.dart';
+import '../repo/getrepository_repo.dart';
 
-
-
-
-
-final productControllerProvider = Provider((ref){
-  final productRepo = ref.watch(productRepoProvider);
-  return ProductController(productRepo: productRepo);
-});
 
 
 final StarredRepoControllerProvider = Provider((ref){
@@ -22,23 +12,7 @@ final StarredRepoControllerProvider = Provider((ref){
   return StarredRepoController(starredRepo: starredgitRepo);
 });
 
-class ProductController {
-  final ProductRepo _productRepo;
 
-  ProductController({required ProductRepo productRepo}):_productRepo = productRepo;
-
-  Future<List<Product>> getProducts() async {
-    final response = await _productRepo.getProducts();
-    final data = jsonDecode(response.body);
-    List<Product> products = [];
-    final productsJson = data['products'];
-
-    for(dynamic productJson in productsJson){
-      products.add(Product.fromJson(productJson));
-    }
-    return products;
-  }
-}
 class StarredRepoController {
   final StarredGitRepo _starredRepo;
 

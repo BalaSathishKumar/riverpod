@@ -69,22 +69,5 @@ class MyHomePage extends ConsumerWidget {
     );
   }
 
-  setOverLap(List<String> overLapImg) {
 
-    for(int i=0 ; i< overLapImg.length; i++)
-      return   Align(
-        widthFactor: 0.5,
-        child: ClipOval(
-            child: Image.network(
-              overLapImg[i],
-              fit: BoxFit.cover,
-              width: 20.0,
-              height: 20.0,
-            )
-        ),
-      );
-
-
-
-  }
 }

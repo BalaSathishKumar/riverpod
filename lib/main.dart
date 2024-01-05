@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ofcriverpod/constants/colors.dart';
 
-import 'UI/dashboard.dart';
+import 'UI/myHomepage.dart';
+import 'constants/theme_color.dart';
 
 
 
@@ -19,7 +21,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-
+      theme: ThemeData.light().copyWith(
+        primaryColor: ThemeColor.Primary,
+        brightness: Brightness.light,
+        backgroundColor: const Color(0xFFE5E5E5),
+        dividerColor: Colors.white54,
+        colorScheme: ColorScheme.light(primary: Colors.white),
+      ),
       home:  MyHomePage(),
     );
   }

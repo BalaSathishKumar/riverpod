@@ -27,6 +27,37 @@ class _DetailTab1State extends State<DetailTab1> {
     ProjectModel(title: "Dashboard Design",subtitle: "Today,shared by - UI Bean Digital",name: "Team",date: "June 15,2023 - June 22,2023",percentage: "85",color: "0xFFC2EA94"),
     ProjectModel(title: "UI/UX Design",subtitle: "Today,shared by - Unbox",name: "Team",date: "June 15,2023 - June 22,2023",percentage: "30",color: "0xFFFF7648"),
   ];
+  ScrollController? _scrollController;
+  double? _scrollPosition = 0.0;
+  int pageNo = 1;
+
+  _scrollListener() {
+    setState(() {
+      _scrollPosition = _scrollController?.position.pixels;
+      print('_scrollPosition... ${_scrollPosition}');
+      if (_scrollPosition == 0) {
+        print('At top');
+        print('_scrollPosition... ${_scrollPosition}');
+      } else {
+        //  print('At bottom and cat id: ${_commonProvider.ExploreCatId}');
+        //  _scrollController.position.pixels == _scrollController.position.maxScrollExtent
+        print('_scrollPosition... ${_scrollPosition} and max scroll ${_scrollController?.position.maxScrollExtent}');
+
+        if(_scrollPosition == _scrollController?.position.maxScrollExtent){
+          print('At bottom');
+        }
+
+      }
+
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController?.addListener(_scrollListener);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +74,13 @@ class _DetailTab1State extends State<DetailTab1> {
     var devicewidth = MediaQuery.of(context).size.width;
     return  Scaffold(
       backgroundColor: Colors.grey.withOpacity(0.1),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ListView.builder(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              controller: _scrollController,
               shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                //physics: NeverScrollableScrollPhysics(),
                 itemCount: projectdata.length,
                 itemBuilder: (context,index){
               return Padding(
@@ -126,8 +158,8 @@ class _DetailTab1State extends State<DetailTab1> {
                 ),
               );
             }),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

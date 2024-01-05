@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ofcriverpod/UI/detailTab1.dart';
+import 'package:ofcriverpod/DetailPage_widgets/detailTab1.dart';
 import 'package:ofcriverpod/constants/colors.dart';
 import 'package:ofcriverpod/utils/common_textstyles.dart';
 
 import 'NewDash.dart';
-import 'detailTab2.dart';
-import 'detailTab3.dart';
+import '../DetailPage_widgets/detailTab2.dart';
+import '../DetailPage_widgets/detailTab3.dart';
 
 
 class DetailPage extends StatefulWidget {
@@ -49,7 +49,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
