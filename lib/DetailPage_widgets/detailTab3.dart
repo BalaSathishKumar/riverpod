@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ofcriverpod/constants/colors.dart';
 
 import '../database/user_db.dart';
 import '../models/userReponseModel.dart';
@@ -23,6 +24,7 @@ class _DetailTab3State extends State<DetailTab3> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: Appcolors.white,
       body:  Container(
 
         child: SingleChildScrollView(

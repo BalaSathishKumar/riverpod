@@ -4,7 +4,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../models/starredGitRepoModel.dart';
 
-typedef IndexCallback = void Function(int selectedIndex);
+
 class StarredTile extends StatelessWidget {
   const StarredTile({
     super.key,
@@ -18,7 +18,7 @@ class StarredTile extends StatelessWidget {
   final List<Items>? gitdatas;
   final List<String> overLapImg;
   final Function(bool?)? onPressed;
-  final IndexCallback  onPressedchk;
+  final Function(int?)  onPressedchk;
   final int? selectedIndex;
 
   @override
@@ -33,7 +33,7 @@ class StarredTile extends StatelessWidget {
           return GestureDetector(
             onTap: (){
               onPressedchk(index);
-            },
+              },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
