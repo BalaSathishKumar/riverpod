@@ -7,7 +7,7 @@ import 'database_service.dart';
 
 
 class UserDB {
-  final tableName = "users";
+  final tableName = "newusers";
   
   Future<void> createTable(Database databse)async { //  PRIMARY KEY("id" AUTOINCREMENT)
 
@@ -15,9 +15,9 @@ class UserDB {
     CREATE TABLE IF NOT EXISTS $tableName (
     "id" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
-    "mobile" TEXT NOT NULL,
-    "gender" TEXT NOT NULL,
+    "reponame" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "stars" TEXT NOT NULL,
     PRIMARY KEY("id" AUTOINCREMENT)
    )
    ''');
@@ -25,9 +25,9 @@ class UserDB {
 
   Future<int> create({required userResonseModel usermodel}) async {
 
-    final database = await DatabaseService().database;     // DateTime.now().microsecondsSinceEpoch
-    return await database.rawInsert('''INSERT INTO $tableName (id,name,email,mobile,gender) VALUES (NULL,?,?,?,?)''',
-      [usermodel.name,usermodel.reponame,usermodel.description,usermodel.stars]);
+    final database = await DatabaseService().database;
+    return await database.rawInsert('''INSERT INTO $tableName (id,name,reponame,description,stars) VALUES (?,?,?,?,?)''',
+      [usermodel.id,usermodel.name,usermodel.reponame,usermodel.description,usermodel.stars]);
   }
 
  Future<List<userResonseModel>> fetchAll() async {

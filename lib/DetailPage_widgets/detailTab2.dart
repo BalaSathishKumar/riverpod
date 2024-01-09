@@ -8,6 +8,7 @@ import '../controller/getrepository_controller.dart';
 import '../database/user_db.dart';
 import '../models/starredGitRepoModel.dart';
 import '../models/userReponseModel.dart';
+import '../utils/common_functions.dart';
 
 class DetailTab2 extends ConsumerStatefulWidget {
   const DetailTab2({super.key});
@@ -22,7 +23,7 @@ class _DetailTab2State extends ConsumerState<DetailTab2> {
 
   ScrollController? _scrollController;
   double? _scrollPosition = 0.0;
-  int pageNo = 1;
+  int pageNo = 0;
 
   _scrollListener() {
     setState(() {
@@ -34,7 +35,7 @@ class _DetailTab2State extends ConsumerState<DetailTab2> {
         print('_scrollPosition... ${_scrollPosition} and max scroll ${_scrollController?.position.maxScrollExtent}');
         if(_scrollPosition == _scrollController?.position.maxScrollExtent){
           print('At bottom');
-          ref.read(pagenoProvider.notifier).state = pageNo++ ?? 0;
+          ref.read(pagenoProvider.notifier).state = pageNo++;
           ref.watch(userDataProvider);
         }
 
@@ -112,6 +113,7 @@ class _DetailTab2State extends ConsumerState<DetailTab2> {
                                                      reponame: gitdatas?[index].fullName ?? "",
                                                      stars: gitdatas?[index].score.toString() ?? "");
                                                  await userDB.create(usermodel: storeDbData);
+                                                 showToast(context,"data uploaded in DB");
 
                                                },
                                                color: Appcolors.dashgreen,

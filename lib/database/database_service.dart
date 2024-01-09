@@ -17,7 +17,7 @@ class DatabaseService {
   }
   
   Future<String> get fullPath async {
-    const name = 'user.db';
+    const name = 'usernew.db';
     final path = await getDatabasesPath();
     return join(path, name);
   }
@@ -27,7 +27,7 @@ class DatabaseService {
     final path = await fullPath;
     var database = await openDatabase(
         path,
-        version: 1,
+        version: 2,
         onCreate: create,
          singleInstance: true);
     return database;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ofcriverpod/constants/colors.dart';
+import 'package:ofcriverpod/utils/common_textstyles.dart';
 
 import '../database/user_db.dart';
 import '../models/userReponseModel.dart';
@@ -38,7 +39,6 @@ class _DetailTab3State extends State<DetailTab3> {
                     if(snapshot.connectionState == ConnectionState.waiting){
                       return Center(child: CircularProgressIndicator());
                     }else {
-
                       if(snapshot.data != null){
                         final users = snapshot.data!;
                         return users.isEmpty ? Center(child: Text("No Users")) :
@@ -47,7 +47,7 @@ class _DetailTab3State extends State<DetailTab3> {
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: users.length ?? 0,
                             itemBuilder: (context, index) {
-                              print('users[index]::: ${users[index].name}');
+                              print('users[index]::: ${users[index].reponame}');
                                 return Padding(
                                 padding: const EdgeInsets.all(5),
                                 child: ListTile(
@@ -55,8 +55,8 @@ class _DetailTab3State extends State<DetailTab3> {
                                     side: BorderSide(color: Colors.grey, width: 1),
                                     borderRadius: BorderRadius.circular(5),
                                   ),
-                                  title: Text(users[index].name),
-                                  subtitle: Text(users[index].stars),
+                                  title: Text(users[index].name,style: CustomTextStyle.txt18Rbblkbld,),
+                                  subtitle: Text(users[index].description),
                                 ),
                               );
                             });
@@ -72,10 +72,19 @@ class _DetailTab3State extends State<DetailTab3> {
     );
   }
 
-  void fetchUserDB() {
-    setState(() {
+  void fetchUserDB() async {
+    setState(()  {
       futureUsers = userDB.fetchAll();
-      print('db data fetched ${futureUsers}');
+
     });
+    Future<List<userResonseModel>>? _futureOfList = futureUsers;
+    List<userResonseModel>? list = await _futureOfList ;
+
+    for(userResonseModel item in list ?? []){
+      print("db data fetched :: ${item.name}");
+      print("db data fetched :: ${item.description}");
+      print("db data fetched :: ${item.id}");
+      print("db data fetched :: ${item.reponame}");
+    }
   }
 }

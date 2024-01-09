@@ -17,14 +17,9 @@ class StarredGitRepo {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-     // return json.decode(utf8.decode(response.bodyBytes));
-
       final jsonresponse = json.decode(response.body);
       log(response.body);
       return StarredRepoModel.fromJson(jsonresponse);
-
-      // log(response.body);
-      // return response;
 
     }
 
